@@ -1,15 +1,14 @@
 package com.company;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Core {
     private MyStack myStack;
-    private ArrayList<SystemCall> sysHashMap;
+    private HashMap<Integer, SystemCall> sysHashMap;
 
     public void callSysCall(int key) {
         try {
-            if (key >= sysHashMap.size() || key < 0) {
+            if (sysHashMap.get(key) == null) {
                 throw new KeyNotFoundException();
             }
             System.out.println("Try: System Call " + key);
@@ -48,12 +47,12 @@ public class Core {
     }
 
     private void initSysCalls() {
-        sysHashMap = new ArrayList<>();
-        sysHashMap.add(new SystemCall("Integer", "String"));
-        sysHashMap.add(new SystemCall("String", "String", "Integer"));
-        sysHashMap.add(new SystemCall("Integer", "String", "Double"));
-        sysHashMap.add(new SystemCall("String", "Double"));
-        sysHashMap.add(new SystemCall("String", "Integer"));
+        sysHashMap = new HashMap<>(5);
+        sysHashMap.put(1, new SystemCall("Integer", "String"));
+        sysHashMap.put(2, new SystemCall("String", "String", "Integer"));
+        sysHashMap.put(3, new SystemCall("Integer", "String", "Double"));
+        sysHashMap.put(4, new SystemCall("String", "Double"));
+        sysHashMap.put(5, new SystemCall("String", "Integer"));
     }
 
     public Core(MyStack myStack) {

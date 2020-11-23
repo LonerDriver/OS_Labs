@@ -1,7 +1,9 @@
 package com.company;
+
 public class SystemCall {
 
     private String[] parameters;
+
     public SystemCall(String... parameters) {
         this.parameters = parameters;
 
